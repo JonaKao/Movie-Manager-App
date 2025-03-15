@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.master.MovieMasterActivity"
+    tools:ignore="HardcodedText">
+
+    <item
+        android:id="@+id/search"
+        android:icon="@drawable/baseline_search_24"
+        android:title="Filter movies"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:iconTint="?colorOnSurface"
+        app:showAsAction="ifRoom|collapseActionView" />
+
+    <item
+        android:id="@+id/sort"
+        android:icon="@drawable/baseline_filter_list_24"
+        android:title="Sort movies by criteria"
+        app:iconTint="?colorOnSurface"
+        app:showAsAction="always">
+        <menu />
+    </item>
+</menu>

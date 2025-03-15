@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/double_margin"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/result_name"
+        style="@style/DetailAttributeHeader"
+        android:text="@string/movie_results_title_text" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/model_objects_with_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/continue_button"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+
+            android:layout_marginStart="@dimen/default_margin"
+            android:gravity="start|center_vertical"
+            android:paddingStart="@dimen/default_padding"
+            android:paddingTop="0dp"
+            android:paddingEnd="@dimen/default_padding"
+            android:paddingBottom="0dp"
+            android:text="@string/continue_search_in_movies"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/vertical_guideline_end"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/vertical_guideline_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+
+            app:layout_constraintGuide_end="30dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

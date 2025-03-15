@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Widget.Material3.CardView.Outlined"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/default_margin"
+    android:layout_marginTop="@dimen/half_margin"
+    android:layout_marginEnd="@dimen/default_margin"
+    android:layout_marginBottom="@dimen/half_margin">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/content_image"
+            android:layout_width="55dp"
+            android:layout_height="80dp"
+            android:contentDescription="@string/list_item_portrayable_image"
+            android:scaleType="centerCrop"
+            android:src="@drawable/default_image_medium"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+
+            app:shapeAppearance="@style/ShapeAppearance.Material3.Corner.Medium" />
+
+        <TextView
+            android:id="@+id/content_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:paddingStart="@dimen/double_padding"
+            android:paddingEnd="@dimen/default_padding"
+            android:text="@string/bottom_navigation_menu_movies"
+
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+            app:layout_constraintBottom_toTopOf="@+id/content_subtitle"
+            app:layout_constraintEnd_toStartOf="@id/content_label"
+            app:layout_constraintStart_toEndOf="@id/content_image"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/content_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:background="@drawable/background_border_rounded"
+            android:gravity="top|end"
+            android:paddingStart="@dimen/half_padding"
+            android:paddingTop="@dimen/half_padding"
+            android:paddingEnd="@dimen/half_padding"
+            android:paddingBottom="@dimen/half_padding"
+            android:textColor="@color/material_dynamic_primary60"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/content_title"
+            app:textAllCaps="true" />
+
+
+        <TextView
+            android:id="@+id/content_subtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingStart="@dimen/double_padding"
+            android:paddingEnd="@dimen/default_padding"
+            android:text="@string/movie_rating"
+
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            app:layout_constraintEnd_toStartOf="@id/content_warning"
+            app:layout_constraintStart_toEndOf="@id/content_image"
+            app:layout_constraintTop_toBottomOf="@id/content_title" />
+
+        <TextView
+            android:id="@+id/content_warning"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginEnd="@dimen/default_margin"
+            android:gravity="center_vertical|end"
+            android:textColor="@color/design_default_color_error"
+            android:textSize="18sp"
+
+            app:autoSizeTextType="none"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/content_title"
+            app:textAllCaps="true" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

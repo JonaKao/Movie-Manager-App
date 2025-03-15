@@ -1,0 +1,543 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": "",
+    "treatFinalFieldsAsMandatory": false
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": true,
+    "cutTests": true,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": true,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 6,
+    "backwardDepth": 6,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false, // root node is included
+    "useMethodCallsForStructureDiagram": "ForwardOnly" // ForwardOnly, BothDirections, No
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": true,
+    "showMethodParameterNames": true,
+    "showMethodParameterTypes": true,
+    "showMethodReturnType": true,
+    "showPackageLevels": 2,
+    "showDetailedClassStructure": true
+  },
+  "rootClass": "de.uhd.ifi.se.moviemanager.ui.detail.DetailActivity",
+  "extensionCallbackMethod": "" // qualified.class.name#methodName - signature: public static String method(String)
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_115761 { 
+   	label=uhd
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_464993361 { 
+   	label=ifi
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   AssociationStorageManager371012742[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)AssociationStorageManager&lt;L extends Identifiable,
+        R extends Identifiable&gt;</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   directory: File [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   identifier: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   leftIdUnmapper: Function&lt;Integer, L&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   rightIdUnmapper: Function&lt;Integer, R&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ loadFromStorage(): Multimap&lt;L, R&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" ># loadMappings(lines: List&lt;String&gt;): Multimap&lt;Integer, Integer&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ saveToStorage(multimap: Multimap&lt;L, R&gt;)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DataObjectStorageManager371012742[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DataObjectStorageManager&lt;T extends Identifiable&gt;</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   directory: File [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   files: Set&lt;File&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   modelClass: Class&lt;T&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- createFileNameFor(object: T): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ loadFromStorage(): List&lt;T&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" ># loadFromStorage(jsonFile: File): Optional&lt;T&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- loadNamesForAllStoredClasses()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ remove(object: T)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ saveToStorage(object: T)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DateUtils607002467[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DateUtils</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ dateToText(date: Date): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ dateToText(formatter: SimpleDateFormat, date: Date): String</TD></TR>
+<TR><TD ALIGN="LEFT" >+ daysFromNow(d: Date): long</TD></TR>
+<TR><TD ALIGN="LEFT" >+ differenceInDays(date1: Date, date2: Date): long</TD></TR>
+<TR><TD ALIGN="LEFT" >+ differenceInYears(date1: Date, date2: Date): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ isLeapYear(year: int): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ normDate(date: Date): Date</TD></TR>
+<TR><TD ALIGN="LEFT" >+ normDateTimeToMidnight(d: Date): Date</TD></TR>
+<TR><TD ALIGN="LEFT" ># normMillis(millis: long): long</TD></TR>
+<TR><TD ALIGN="LEFT" >+ now(): Date</TD></TR>
+<TR><TD ALIGN="LEFT" >+ nowAtMidnight(): Date</TD></TR>
+<TR><TD ALIGN="LEFT" >+ textToDate(dateAsString: String): Date</TD></TR>
+<TR><TD ALIGN="LEFT" >+ textToDate(format: String, str: String): Date</TD></TR>
+<TR><TD ALIGN="LEFT" >+ textToDate(formatter: SimpleDateFormat, str: String): Date</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+DetailActivity673130026[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)DetailActivity&lt;T extends ModelObjectWithImage&gt;</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >#   currentObject: T [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   editActivity: Class&lt;? extends Activity&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   imageView: ImageView [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   layoutId: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   scrollView: NestedScrollView [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   toolbar: MaterialToolbar [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   updateAfterEditLauncher: ActivityResultLauncher&lt;Intent&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >+   updateAfterLinkedDetailsLauncher: ActivityResultLauncher&lt;Intent&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   updated: boolean [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># bindViews()</TD></TR>
+<TR><TD ALIGN="LEFT" ># initImageView(imageSize: ImageSize)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ onBackPressed()</TD></TR>
+<TR><TD ALIGN="LEFT" ># onCreate(savedInstanceState: Bundle)</TD></TR>
+<TR><TD ALIGN="LEFT" ># registerSpecificListeners()</TD></TR>
+<TR><TD ALIGN="LEFT" ># updateAfterEdit(intent: Intent): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" ># updateAfterLinkedDetails(result: Intent)</TD></TR>
+<TR><TD ALIGN="LEFT" ># updateUIWithModelData()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+FileUtils607002467[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)FileUtils</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ appendLine(file: File, line: String)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ appendLines(file: File, lines: List&lt;String&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >- calculateBufferSize(fileLength: long): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ copy(source: File, destination: File)</TD></TR>
+<TR><TD ALIGN="LEFT" >- copy(source: File, destination: File, replaceExisting: boolean)</TD></TR>
+<TR><TD ALIGN="LEFT" >- copyEachFile(source: File, destination: File, replaceExisting: boolean)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ createDirectory(file: File)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ delete(file: File)</TD></TR>
+<TR><TD ALIGN="LEFT" >- destinationChecks(destination: File, replaceExisting: boolean)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ exists(file: File): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ get(arg: String, args: String...): File</TD></TR>
+<TR><TD ALIGN="LEFT" >+ list(root: File): Stream&lt;File&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- orderedWalk(files: List&lt;File&gt;, root: File)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ readAllLines(file: File): List&lt;String&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ relativize(file: File, other: File): File</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resolve(file: File, other: String): File</TD></TR>
+<TR><TD ALIGN="LEFT" >+ resolve(file: File, other: File): File</TD></TR>
+<TR><TD ALIGN="LEFT" >- sourceChecks(source: File)</TD></TR>
+<TR><TD ALIGN="LEFT" >- transferFromTo(input: InputStream, out: OutputStream, bufferSize: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ walk(directory: File): Stream&lt;File&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- wasDeletedSuccessfully(file: File): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ writeLines(file: File, lines: List&lt;String&gt;)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ImagePyramid1629665256[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ImagePyramid</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   bitmap: Bitmap [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   id: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   imageUrl: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   prefix: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >- convertColorDrawableToBitmap(colorDrawable: ColorDrawable, imageSize: ImageSize): Bitmap</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getBitmap(size: ImageSize): Optional&lt;Bitmap&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getDefaultImage(context: Context, size: ImageSize): Drawable</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getPath(size: ImageSize): String</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+ModelObjectWithImage1629665256[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)ModelObjectWithImage</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   id: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   image: ImagePyramid [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >#   model: MovieManagerModel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   name: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ compareTo(objectToCompare: ModelObjectWithImage): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ describeContents(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getImage(context: Context, size: ImageSize): Drawable</TD></TR>
+<TR><TD ALIGN="LEFT" >+ writeToParcel(dest: Parcel, flags: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Movie1629665256[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Movie</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   description: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   languages: List&lt;String&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   overallRating: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   productionLocations: List&lt;String&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   rating: double [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   releases: List&lt;MovieRelease&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   runtime: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   watchDate: Date [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ calculateOverallRating(): double</TD></TR>
+<TR><TD ALIGN="LEFT" >+ hasPerformer(performer: Performer): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ link(performer: Performer): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ link(performers: List&lt;Performer&gt;)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ unlink(performer: Performer): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ writeToParcel(dest: Parcel, flags: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+MovieDetailActivity673130026[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MovieDetailActivity</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   linkedPerformersAdapter: PosterAdapter&lt;Performer&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   linkedPerformersHeader: TextView [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   linkedPerformersList: RecyclerView [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   showDescription: TextView [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   showDescriptionHeader: TextView [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   showLanguages: TextView [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   showLanguagesHeader: TextView [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   showProductionLocations: TextView [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   showProductionLocationsHeader: TextView [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   showReleases: TextView [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   showReleasesHeader: TextView [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   showSubtitle: TextView [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   showTitle: TextView [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># bindViews()</TD></TR>
+<TR><TD ALIGN="LEFT" >- hideUnusedViews()</TD></TR>
+<TR><TD ALIGN="LEFT" ># registerSpecificListeners()</TD></TR>
+<TR><TD ALIGN="LEFT" ># updateAfterEdit(intent: Intent): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" ># updateAfterLinkedDetails(result: Intent)</TD></TR>
+<TR><TD ALIGN="LEFT" ># updateUIWithModelData()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+MovieManagerModel1629665256[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MovieManagerModel</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   moviePerformerAssociations: Multimap&lt;Movie, Performer&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   movies: Set&lt;Movie&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   performers: Set&lt;Performer&gt; [0..*]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ addMovie(movie: Movie): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ addPerformer(performer: Performer): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ clear()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getMovieById(id: int): Optional&lt;Movie&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >- getObjectById(id: int, set: Set&lt;T&gt;): Optional&lt;T&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getPerformerById(id: int): Optional&lt;Performer&gt;</TD></TR>
+<TR><TD ALIGN="LEFT" >+ removeMovie(movie: Movie)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ removePerformer(performer: Performer)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+MovieRelease1629665256[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)MovieRelease</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   date: Date [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   location: String [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ describeContents(): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ writeToParcel(dest: Parcel, flags: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+Performer1629665256[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)Performer</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   biography: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   birthName: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   dateOfBirth: Date [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   occupations: List&lt;String&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   rating: double [1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ isPerformerIn(movie: Movie): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ link(movie: Movie): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ unlink(movie: Movie): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ writeToParcel(dest: Parcel, flags: int)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PerformerDetailActivity673130026[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PerformerDetailActivity</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   linkedMoviesAdapter: PosterAdapter&lt;Movie&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   linkedMoviesHeader: TextView [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   linkedMoviesList: RecyclerView [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   showBirthName: TextView [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   showBirthNameHeader: TextView [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   showDescription: TextView [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   showDescriptionHeader: TextView [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   showOccupations: TextView [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   showOccupationsHeader: TextView [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   showSubtitle: TextView [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   showTitle: TextView [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" ># bindViews()</TD></TR>
+<TR><TD ALIGN="LEFT" ># finishAfterDeletion(removedPerformer: Performer)</TD></TR>
+<TR><TD ALIGN="LEFT" ># registerSpecificListeners()</TD></TR>
+<TR><TD ALIGN="LEFT" ># updateAfterEdit(intent: Intent): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" ># updateAfterLinkedDetails(result: Intent)</TD></TR>
+<TR><TD ALIGN="LEFT" ># updateUIWithModelData()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+PosterAdapter978931862[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)PosterAdapter&lt;T extends Identifiable &amp; ImageBased &amp; Nameable &amp; Parcelable&gt;</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   context: Context [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   data: List&lt;T&gt; [0..*]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   itemLayout: int [1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   onItemClick: Consumer&lt;T&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ getItemViewType(position: int): int</TD></TR>
+<TR><TD ALIGN="LEFT" >+ onBindViewHolder(viewHolder: ViewHolder, position: int)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ onCreateViewHolder(parent: ViewGroup, i: int): ViewHolder</TD></TR>
+<TR><TD ALIGN="LEFT" >- onItemClick(view: View)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ update(updatedData: List&lt;T&gt;)</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+StorageManagerAccess371012742[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)StorageManagerAccess</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   storageManager: StorageManager [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ clear()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ deleteMovieFile(movie: Movie): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ deletePerformerFile(performer: Performer): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ openMovieManagerStorage(activity: Activity)</TD></TR>
+<TR><TD ALIGN="LEFT" >- openStorageIn(directory: File)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ saveImage(imagePyramid: ImagePyramid)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ saveMovieToFile(movie: Movie): Movie</TD></TR>
+<TR><TD ALIGN="LEFT" >+ savePerformerToFile(performer: Performer): Performer</TD></TR>
+<TR><TD ALIGN="LEFT" >+ selfDestruct()</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+
+StorageManagerImpl371012742[
+	label=<<TABLE BORDER="1" CELLBORDER="0" CELLPADDING="4" CELLSPACING="0">
+<TR><TD ALIGN="LEFT" >(C)StorageManagerImpl</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >-   homeDirectory: File [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   imagePath: String [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   movieManagerModel: MovieManagerModel [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   moviePerformerAssociationStorageManager: AssociationStorageManager&lt;Movie, Performer&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   movieStorageManager: DataObjectStorageManager&lt;Movie&gt; [0..1]</TD></TR>
+<TR><TD ALIGN="LEFT" >-   performerStorageManager: DataObjectStorageManager&lt;Performer&gt; [0..1]</TD></TR>
+<HR/>
+<TR><TD ALIGN="LEFT" >+ clear()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ deleteMovieFile(movie: Movie): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ deletePerformerFile(performer: Performer): boolean</TD></TR>
+<TR><TD ALIGN="LEFT" >+ getInstance(file: File): StorageManager</TD></TR>
+<TR><TD ALIGN="LEFT" >- loadAssociationsFromFiles()</TD></TR>
+<TR><TD ALIGN="LEFT" >- loadDataObjectsFromJsonFiles()</TD></TR>
+<TR><TD ALIGN="LEFT" >- removeImageFromStorage(imagePyramid: ImagePyramid)</TD></TR>
+<TR><TD ALIGN="LEFT" >- saveAllAssociations()</TD></TR>
+<TR><TD ALIGN="LEFT" >+ saveImage(imagePyramid: ImagePyramid)</TD></TR>
+<TR><TD ALIGN="LEFT" >+ saveMovieToFile(movie: Movie): Movie</TD></TR>
+<TR><TD ALIGN="LEFT" >+ savePerformerToFile(performer: Performer): Performer</TD></TR>
+<TR><TD ALIGN="LEFT" >+ selfDestruct()</TD></TR>
+<TR><TD ALIGN="LEFT" >- tryGetById(id: int, getter: IntFunction&lt;Optional&lt;A&gt;&gt;, clazz: Class&lt;A&gt;): A</TD></TR>
+<TR><TD ALIGN="LEFT" >- tryGetMovieById(id: int): Movie</TD></TR>
+<TR><TD ALIGN="LEFT" >- tryGetPerformerById(id: int): Performer</TD></TR>
+</TABLE>>
+	style=filled
+	margin=0
+	shape=plaintext
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+
+'edges    
+DataObjectStorageManager371012742 -> FileUtils607002467[label="remove() -> delete()"];
+DetailActivity673130026 -> ModelObjectWithImage1629665256[label="initImageView() -> getImage()"];
+DetailActivity673130026 -> MovieDetailActivity673130026[arrowhead=none, arrowtail=empty, dir=both];
+DetailActivity673130026 -> PerformerDetailActivity673130026[arrowhead=none, arrowtail=empty, dir=both];
+DetailActivity673130026 -> StorageManagerAccess371012742[label="onCreate() -> openMovieManagerStorage()"];
+ModelObjectWithImage1629665256 -> ImagePyramid1629665256[arrowhead=none];
+ModelObjectWithImage1629665256 -> Movie1629665256[arrowhead=none, arrowtail=empty, dir=both];
+ModelObjectWithImage1629665256 -> MovieManagerModel1629665256[label="model
+[0..1]"];
+ModelObjectWithImage1629665256 -> Performer1629665256[arrowhead=none, arrowtail=empty, dir=both];
+Movie1629665256 -> MovieRelease1629665256[label="releases
+[0..*]"];
+Movie1629665256 -> Performer1629665256[arrowhead=none];
+MovieDetailActivity673130026 -> MovieManagerModel1629665256[label="updateAfterLinkedDetails() -> getMovieById()"];
+MovieDetailActivity673130026 -> Performer1629665256[label="linkedPerformersAdapter
+[0..1]"];
+MovieDetailActivity673130026 -> PosterAdapter978931862[label="linkedPerformersAdapter
+[0..1]"];
+MovieManagerModel1629665256 -> Movie1629665256[label="moviePerformerAssociations
+[0..1]"];
+MovieManagerModel1629665256 -> Movie1629665256[label="movies
+[0..*]"];
+MovieManagerModel1629665256 -> Performer1629665256[label="moviePerformerAssociations
+[0..1]"];
+MovieManagerModel1629665256 -> Performer1629665256[label="performers
+[0..*]"];
+PerformerDetailActivity673130026 -> Movie1629665256[label="linkedMoviesAdapter
+[0..1]"];
+PerformerDetailActivity673130026 -> MovieManagerModel1629665256[label="updateAfterLinkedDetails() -> getPerformerById()"];
+PerformerDetailActivity673130026 -> PosterAdapter978931862[label="linkedMoviesAdapter
+[0..1]"];
+StorageManagerAccess371012742 -> StorageManagerImpl371012742[label="openStorageIn() -> getInstance()"];
+StorageManagerImpl371012742 -> AssociationStorageManager371012742[label="moviePerformerAssociationStorageManager
+[0..1]"];
+StorageManagerImpl371012742 -> DataObjectStorageManager371012742[label="movieStorageManager
+[0..1]"];
+StorageManagerImpl371012742 -> DataObjectStorageManager371012742[label="performerStorageManager
+[0..1]"];
+StorageManagerImpl371012742 -> ImagePyramid1629665256[label="saveImage() -> getPath()"];
+StorageManagerImpl371012742 -> Movie1629665256[label="moviePerformerAssociationStorageManager
+[0..1]"];
+StorageManagerImpl371012742 -> Movie1629665256[label="movieStorageManager
+[0..1]"];
+StorageManagerImpl371012742 -> MovieManagerModel1629665256[label="movieManagerModel
+[0..1]"];
+StorageManagerImpl371012742 -> Performer1629665256[label="moviePerformerAssociationStorageManager
+[0..1]"];
+StorageManagerImpl371012742 -> Performer1629665256[label="performerStorageManager
+[0..1]"];
+StorageManagerImpl371012742 -> StorageManagerAccess371012742[arrowhead=none];
+    
+}
+@enduml

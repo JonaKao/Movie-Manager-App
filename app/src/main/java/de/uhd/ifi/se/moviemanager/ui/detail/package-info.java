@@ -1,0 +1,1 @@
+package de.uhd.ifi.se.moviemanager.ui.detail;

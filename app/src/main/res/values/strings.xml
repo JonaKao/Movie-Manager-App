@@ -1,0 +1,82 @@
+<resources>
+    <string name="app_name">MovieManager</string>
+
+    <!-- Bottom Navigation -->
+    <string name="bottom_navigation_menu_search">Search</string>
+    <string name="bottom_navigation_menu_movies">Movies</string>
+    <string name="bottom_navigation_menu_performers">Performers</string>
+
+    <!-- Master Fragments -->
+    <string name="deletion_warning_message">Do you really want to remove \'%s\'?</string>
+
+    <!-- Master Sort Criterion's -->
+    <string name="sorting_criterion_direction_description">Shows the direction of the current sorting order.</string>
+
+    <string name="movie_criterion_title">Title</string>
+    <string name="movie_criterion_rating">Rating</string>
+    <string name="movie_criterion_overall_rating">Overall Rating</string>
+    <string name="movie_criterion_watched">Watch Date</string>
+    <string name="movie_criterion_return_date">Return Date</string>
+    <string name="movie_criterion_overdue">Overdue</string>
+
+    <string name="performer_criterion_name">Name</string>
+    <string name="performer_criterion_rating">Rating</string>
+    <string name="performer_criterion_age">Age</string>
+
+    <!-- Editable Movie Attributes -->
+    <string name="movie_rating">Rating</string>
+    <string name="movie_languages">Languages</string>
+    <string name="movie_releases">Releases</string>
+    <string name="movie_productionLocations">Production Locations</string>
+
+    <!-- Edit Menu Actions -->
+    <string name="edit_action_commit">Save changes</string>
+
+    <!-- Search Menu Titles -->
+    <string name="default_search_title">Specific Search</string>
+    <string name="default_query_text">Search in …</string>
+    <string name="movie_results_title_text">Movie Results</string>
+
+    <string name="performer_search_title">Performer Search</string>
+    <string name="movie_search_title">Movie Search</string>
+    <string name="search_info">Search by entering a partial name. The best matches will show at the top of the list.</string>
+
+    <!-- Search Bars -->
+    <string name="search_icon_description">Shows the classic search icon - a magnifying glass</string>
+    <string name="search_all_categories_hint">Search all Categories</string>
+    <string name="search_in_performers_hint">Search in Performers</string>
+    <string name="search_in_movies_hint">Search in Movies</string>
+    <string name="continue_search_in_movies">Continue search in Movies</string>
+    <string name="continue_search_in_performers">Continue search in Performers</string>
+    <string name="only_search_info">Or continue search in a more specific context:</string>
+    <string name="search_in_movies_only"><u>Search only in Movies</u></string>
+    <string name="search_in_performers_only"><u>Search only in Performers</u></string>
+
+    <!-- Basic Dialog -->
+    <string name="discard_changes">Do you really want to discard changes?</string>
+    <string name="warning">Warning</string>
+    <string name="cancel">Cancel</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <!-- Warnings -->
+    <string name="warning_movie_title">Title is required</string>
+    <string name="warning_performer_name">Name is required.</string>
+    <string name="warning_performer_minimum_movies">You need to link at least one movie.</string>
+    <string name="warning_linked_performers_removal">If changes are committed %d Performer will be removed. Continue?</string>
+    <string name="warning_performer_self_delete"> (This performer will be removed!)</string>
+    <string name="warning_performer_will_be_deleted">The Performer \'%s\' will be removed!</string>
+
+    <!-- Information -->
+    <string name="info_performer_deletion">Performer \'%s\' was removed!</string>
+
+    <!-- Image Descriptions -->
+    <string name="list_item_portrayable_image">Image representing this entity.</string>
+
+    <string name="no_performers_available">No Performers available</string>
+    <string name="select_performers">Select Performers</string>
+    <string name="select_movies">Select Movies</string>
+    <string name="ok">OK</string>
+    <string name="change_image">Change</string>
+    <string name="remove_image">Remove</string>
+</resources>
